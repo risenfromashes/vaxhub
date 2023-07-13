@@ -10,7 +10,7 @@ function decodeBase64(str) {
 }
 
 app.get("/", (req, res) => {
-  res.send("not hello");
+  res.send(process.env.DB_USERNAME);
 });
 
 app.listen(PORT, HOST);
