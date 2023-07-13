@@ -1,23 +1,19 @@
 {
-  "name": "vaxhub",
-  "version": "1.0.1",
-  "description": "cse fest hackathon",
-  "main": "server.js",
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest --forceExit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/risenfromashes/vaxhub.git"
-  },
-  "author": "risenfromashes",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/risenfromashes/vaxhub/issues"
-  },
-  "homepage": "https://github.com/risenfromashes/vaxhub#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jest": "^29.6.1",
+    "pg": "^8.11.1",
+    "supertest": "^6.3.3"
   }
 }
