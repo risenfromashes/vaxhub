@@ -31,34 +31,34 @@ spec:
         app: vaxhub-app
     spec:
       containers:
-      - name: vaxhub-app
-        image: DOCKERHUB_USERNAME/DOCKERHUB_REPOSITORY:IMAGE_LABEL
-				env:
-	      - name: DB_USERNAME
-	        valueFrom:
-	          secretKeyRef:
-	            name: dbcredentials
-	            key: username
-	      - name: DB_PASSWORD
-	        valueFrom:
-	          secretKeyRef:
-	            name: dbcredentials
-	            key: password
-	      - name: DB_PORT
-	        valueFrom:
-	          secretKeyRef:
-	            name: dbcredentials
-	            key: port
-	      - name: DB_HOST
-	        valueFrom:
-	          secretKeyRef:
-	            name: dbcredentials
-	            key: host
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3001
+        - name: vaxhub-app
+          image: DOCKERHUB_USERNAME/DOCKERHUB_REPOSITORY:IMAGE_LABEL
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: dbcredentials
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: dbcredentials
+                  key: password
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: dbcredentials
+                  key: port
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: dbcredentials
+                  key: host
+              imagePullPolicy: Always
+              ports:
+                - containerPort: 3001
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
 ---
 # This section will create a service in the Kubernetes cluster
 # so that the deployment can be accessed from the outside
