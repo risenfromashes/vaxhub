@@ -27,19 +27,19 @@ jobs:
           secret-type: 'generic'
           secret-name: DB_USERNAME
           data: ${{ secrets.DB_USERNAME }}
-        uses: azure/k8s-create-secret@v2
+      - uses: azure/k8s-create-secret@v2
         with:
           namespace: 'vaxhub-app'
           secret-type: 'generic'
           secret-name: DB_PASSWORD
           data: ${{ secrets.DB_PASSWORD }}
-        uses: azure/k8s-create-secret@v2
+      - uses: azure/k8s-create-secret@v2
         with:
           namespace: 'vaxhub-app'
           secret-type: 'generic'
           secret-name: DB_PORT
           data: ${{ secrets.DB_PORT }}
-        uses: azure/k8s-create-secret@v2
+      - uses: azure/k8s-create-secret@v2
         with:
           namespace: 'vaxhub-app'
           secret-type: 'generic'
