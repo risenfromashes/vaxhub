@@ -20,6 +20,14 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: Set database secrets
+        run: |
+          kubectl delete secret dbcredentials
+          kubectl create secret generic dbcredentials \
+            --from-literal=username=${{ secrets.DB_USERNAME }} \
+            --from-literal=password=${{ secrets.DB_PASSWORD }} \
+            --from-literal=host=${{ secrets.DB_HOST }} \
+            --from-literal=port=${{ secrets.DB_PORT }}
 
       - name: Docker Build and Push, Kubernetes apply
         run: |
