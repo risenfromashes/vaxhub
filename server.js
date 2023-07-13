@@ -6,8 +6,7 @@ const HOST = '0.0.0.0';
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('GGWP!!!');
+  res.send(process.env.DB_USERNAME);
 });
 
 app.listen(PORT, HOST);
-console.log("app running on port: ${port}")

@@ -20,6 +20,13 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: Set database secrets
+        uses: azure/k8s-create-secret@v2
+        with:
+          namespace: 'vaxhub-app'
+          secret-type: 'generic'
+          secret-name: DB_USERNAME
+          data: ${{ secrets.DB_USERNAME }}
       - name: Docker Build and Push, Kubernetes apply
         run: |
           docker build --tag ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ github.sha }} .
