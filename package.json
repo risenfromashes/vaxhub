@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/risenfromashes/vaxhub/issues"
   },
-  "homepage": "https://github.com/risenfromashes/vaxhub#readme"
+  "homepage": "https://github.com/risenfromashes/vaxhub#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
