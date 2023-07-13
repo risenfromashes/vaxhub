@@ -22,6 +22,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
       - name: Set database secrets
         run: |
+          kubectl delete secret -n vaxhub-app  dbcredentials
           kubectl create secret generic -n vaxhub-app dbcredentials \
             --from-literal=username=${{ secrets.DB_USERNAME }} \
             --from-literal=password=${{ secrets.DB_PASSWORD }} \
