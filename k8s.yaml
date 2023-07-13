@@ -33,6 +33,9 @@ spec:
       containers:
         - name: vaxhub-app
           image: DOCKERHUB_USERNAME/DOCKERHUB_REPOSITORY:IMAGE_LABEL
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3001
           env:
             - name: DB_USERNAME
               valueFrom:
@@ -54,9 +57,6 @@ spec:
                 secretKeyRef:
                   name: dbcredentials
                   key: host
-              imagePullPolicy: Always
-              ports:
-                - containerPort: 3001
       imagePullSecrets:
         - name: regcred
 ---
