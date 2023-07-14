@@ -10,6 +10,7 @@
     ["Login", "/login"],
     ["Register", "/register"],
     ["Home", "/home"],
+    ["Logout", "/logout"],
   ]);
 
   let curRoute;

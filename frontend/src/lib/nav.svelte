@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Link, navigate } from "svelte-navigator";
   import { currentUserName } from "../lib/stores/user";
+  import { isLoggedIn } from "../lib/stores/user";
 
   export let routes: Map<string, string>;
 
@@ -53,6 +54,15 @@
           to={path}
           on:click={() => {
             changeRoute();
+            console.log(name);
+            if (name.trim() === "Logout") {
+              changeRoute();
+              isLoggedIn.set(false);
+              console.log("bye");
+              currentUserName.set("");
+              navigate("/login");
+            }
+
             showDrawer = !showDrawer;
             navigate(path);
           }}>{name}</Link

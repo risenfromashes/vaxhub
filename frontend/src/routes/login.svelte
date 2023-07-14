@@ -2,7 +2,9 @@
   let nid = "";
   import { navigate } from "svelte-navigator";
   import { currentUserName } from "../lib/stores/user";
+  import { userNID } from "../lib/stores/user";
   import { currentRoute } from "../lib/stores/route";
+  import { isLoggedIn } from "../lib/stores/user";
 
   let warning = false;
 
@@ -22,7 +24,10 @@
       const username = await response.json();
       console.log(username);
       currentUserName.set(username);
+      userNID.set(nid);
+      console.log($currentUserName, $userNID);
       currentRoute.set("Home");
+      isLoggedIn.set(true);
       navigate("/home");
     } else {
       warning = true;
