@@ -47,6 +47,10 @@ app.get("/api/hello", (req, res) => {
   res.send("Hello, World!");
 });
 
+app.get("/", (req, res) => {
+  res.sendFile("frontend/dist/index.html");
+});
+
 app.post("/login", (req, response) => {
   const formData = req.body;
   console.log(formData);
@@ -258,7 +262,7 @@ app.post("/getcert", (req, response) => {
   }
 });
 
-app.get("*", function (req, res) {
+app.get("/*", function (req, res) {
   res.redirect("/");
 });
 

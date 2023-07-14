@@ -2,6 +2,8 @@
   import { Link, navigate } from "svelte-navigator";
   import { currentUserName } from "../lib/stores/user";
   import { isLoggedIn } from "../lib/stores/user";
+  import Navelem from "./navelem.svelte";
+  import Logout from "./logout.svelte";
 
   export let routes: Map<string, string>;
 
@@ -19,7 +21,7 @@
 </script>
 
 <nav
-  class="dark:bg-gray-900 flex items-center justify-between w-full py-3 px-4 sm:px-8 fixed z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-800"
+  class="dark:bg-gray-900 ml-4 flex items-center justify-between py-3 px-4 sm:px-8 w-full fixed z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-800"
 >
   <a href="https://www.buet.ac.bd" class="flex items-center z-50">
     <img
@@ -40,35 +42,15 @@
   />
 
   <div
-    class={"absolute top-0 left-0 flex-col z-40 bg-gray-900 w-full h-screen items-center justify-center flex md:relative md:flex-row md:h-auto md:w-auto transition-all " +
-      (showDrawer ? "translate-x-0" : "translate-x-full") +
-      " md:top-auto md:left-auto md:translate-x-0"}
+    class="mr-10 flex-col z-40 bg-gray-900 h-screen items-center justify-center flex md:relative md:flex-row md:h-auto md:w-auto transition-all"
   >
-    {#each [...routes] as [name, path]}
-      <div
-        class={"m-3 hover:text-emerald-400" +
-          (path === window.location.pathname ? " font-bold" : "")}
-      >
-        <Link
-          class="text-lg"
-          to={path}
-          on:click={() => {
-            changeRoute();
-            console.log(name);
-            if (name.trim() === "Logout") {
-              changeRoute();
-              isLoggedIn.set(false);
-              console.log("bye");
-              currentUserName.set("");
-              navigate("/login");
-            }
-
-            showDrawer = !showDrawer;
-            navigate(path);
-          }}>{name}</Link
-        >
-      </div>
-    {/each}
+    {#if $isLoggedIn}
+      <Navelem name="Home" path="/home" />
+      <Logout />
+    {:else}
+      <Navelem name="Login" path="/login" />
+      <Navelem name="Register" path="/register" />
+    {/if}
   </div>
 
   {#if $name !== ""}

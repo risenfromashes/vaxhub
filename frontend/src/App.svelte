@@ -5,6 +5,7 @@
   import Login from "./routes/login.svelte";
   import Register from "./routes/register.svelte";
   import Home from "./routes/home.svelte";
+  import { isLoggedIn } from "./lib/stores/user";
 
   const routes: Map<string, string> = new Map([
     ["Login", "/login"],
@@ -16,6 +17,7 @@
   let curRoute;
 
   currentRoute.subscribe((value) => {
+    console.log(curRoute);
     curRoute = currentRoute;
   });
 </script>
@@ -24,20 +26,33 @@
   <div class="w-full h-screen bg-slate-900 text-slate-100">
     <Nav {routes} />
     <div class="">
-      <Route path="/">
-        <Login />
-      </Route>
-      {#if $curRoute !== "Home"}
+      {#if !$isLoggedIn}
+        <Route path="/">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/home">
+          <Login />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+      {:else}
         <Route path="/login">
           <Login />
         </Route>
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
       {/if}
-      <Route path="/home">
-        <Home />
-      </Route>
     </div>
   </div>
 </Router>
