@@ -10,6 +10,11 @@ VaxHub is an online vaccination system where people can register using their nam
 
 This project utilizes `Jest, Github Actions, Docker and Kubernetes` for test automation, continuous integration and deployment.
 
+## System Architecture Diagram
+<p align='center'>
+<img alt="VaxHub" src="assets/diagram.png" />
+</p>
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
