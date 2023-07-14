@@ -1,5 +1,9 @@
 # VaxHub
 
+<p align='center'>
+<img alt="VaxHub" src="assets/vaxhub-logo.png" />
+</p>
+
 ## Project Overview
 
 VaxHub is an online vaccination system where people can register using their name, address and NID. People can register for vaccination where they will get a vaccination date and they will go get a vaccine on that date. After getting the vaccination the user can apply for certificate and download it from the site.
